@@ -80,6 +80,11 @@ jobs:
             }
           # - { target: aarch64-pc-windows-msvc, os: windows-2022, arch: aarch64 }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -301,6 +306,11 @@ jobs:
             }
           # - { target: aarch64-pc-windows-msvc, os: windows-2022 }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -448,6 +458,11 @@ jobs:
               vcpkg-triplet: arm64-ios,
             }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -576,6 +591,11 @@ jobs:
               vcpkg-triplet: arm64-osx,
             }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -843,6 +863,11 @@ jobs:
               suffix: "",
             }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
@@ -1115,6 +1140,11 @@ jobs:
       x86_target: "" # can be ",android-x86"
       suffix: ""
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
@@ -1315,6 +1345,11 @@ jobs:
               vcpkg-triplet: arm64-linux,
             }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -1656,6 +1691,11 @@ jobs:
               extra_features: ",unix-file-copy-paste",
             }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -1865,6 +1905,11 @@ jobs:
           - { target: x86_64-unknown-linux-gnu, arch: x86_64 }
           - { target: aarch64-unknown-linux-gnu, arch: aarch64 }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
@@ -1938,6 +1983,11 @@ jobs:
               suffix: "",
             }
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
@@ -1999,6 +2049,11 @@ jobs:
     env:
       RELEASE_NAME: web-basic
     steps:
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
