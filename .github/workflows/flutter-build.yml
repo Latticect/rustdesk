@@ -80,11 +80,6 @@ jobs:
             }
           # - { target: aarch64-pc-windows-msvc, os: windows-2022, arch: aarch64 }
     steps:
-      - name: Inject Custom Server and Key
-        shell: bash
-        run: |
-          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
-          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -96,7 +91,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Restore bridge files
         uses: actions/download-artifact@master
         with:
@@ -306,11 +305,6 @@ jobs:
             }
           # - { target: aarch64-pc-windows-msvc, os: windows-2022 }
     steps:
-      - name: Inject Custom Server and Key
-        shell: bash
-        run: |
-          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
-          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -322,7 +316,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Install LLVM and Clang
         uses: rustdesk-org/install-llvm-action-32bit@master
         with:
@@ -458,11 +456,6 @@ jobs:
               vcpkg-triplet: arm64-ios,
             }
     steps:
-      - name: Inject Custom Server and Key
-        shell: bash
-        run: |
-          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
-          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -477,7 +470,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
@@ -591,11 +588,6 @@ jobs:
               vcpkg-triplet: arm64-osx,
             }
     steps:
-      - name: Inject Custom Server and Key
-        shell: bash
-        run: |
-          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
-          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -607,7 +599,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Import the codesign cert
         if: env.MACOS_P12_BASE64 != null
         uses: apple-actions/import-codesign-certs@v1
@@ -863,11 +859,6 @@ jobs:
               suffix: "",
             }
     steps:
-      - name: Inject Custom Server and Key
-        shell: bash
-        run: |
-          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
-          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
@@ -925,7 +916,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
@@ -1140,11 +1135,6 @@ jobs:
       x86_target: "" # can be ",android-x86"
       suffix: ""
     steps:
-      - name: Inject Custom Server and Key
-        shell: bash
-        run: |
-          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
-          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
@@ -1202,7 +1192,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
@@ -1345,11 +1339,6 @@ jobs:
               vcpkg-triplet: arm64-linux,
             }
     steps:
-      - name: Inject Custom Server and Key
-        shell: bash
-        run: |
-          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
-          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -1372,7 +1361,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Set Swap Space
         if: ${{ matrix.job.arch == 'x86_64' }}
         uses: pierotofy/set-swap-space@master
@@ -1691,11 +1684,6 @@ jobs:
               extra_features: ",unix-file-copy-paste",
             }
     steps:
-      - name: Inject Custom Server and Key
-        shell: bash
-        run: |
-          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
-          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -1707,7 +1695,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      - name: Inject Custom Server and Key
+        shell: bash
+        run: |
+          sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
+          sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
       - name: Modify vcpkg.json for armv7
         if: matrix.job.vcpkg-triplet == 'arm-linux'
         run: |
@@ -1905,16 +1897,15 @@ jobs:
           - { target: x86_64-unknown-linux-gnu, arch: x86_64 }
           - { target: aarch64-unknown-linux-gnu, arch: aarch64 }
     steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Inject Custom Server and Key
         shell: bash
         run: |
           sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
           sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
-      - name: Checkout source code
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
       - name: Download Binary
         uses: actions/download-artifact@master
         with:
@@ -1983,16 +1974,15 @@ jobs:
               suffix: "",
             }
     steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Inject Custom Server and Key
         shell: bash
         run: |
           sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
           sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
-      - name: Checkout source code
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
       - name: Download Binary
         uses: actions/download-artifact@master
         with:
@@ -2049,16 +2039,15 @@ jobs:
     env:
       RELEASE_NAME: web-basic
     steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Inject Custom Server and Key
         shell: bash
         run: |
           sed -i "s/___SERVER___/${{ secrets.SERVER }}/g" libs/hbb_common/src/config.rs
           sed -i "s/___KEY___/${{ secrets.KEY }}/g" libs/hbb_common/src/config.rs
-      - name: Checkout source code
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
       - name: Prepare env
         run: |
           sudo apt-get update -y
