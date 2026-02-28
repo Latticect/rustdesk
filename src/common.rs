@@ -1038,8 +1038,12 @@ pub fn get_custom_rendezvous_server(custom: String) -> String {
     if !custom.is_empty() {
         return custom;
     }
-    if !config::PROD_RENDEZVOUS_SERVER.read().unwrap().is_empty() {
-        return config::PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
+    // Only use PROD_RENDEZVOUS_SERVER if runtime-config feature is not enabled
+    #[cfg(not(feature = "runtime-config"))]
+    {
+        if !config::PROD_RENDEZVOUS_SERVER.read().unwrap().is_empty() {
+            return config::PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
+        }
     }
     "".to_owned()
 }

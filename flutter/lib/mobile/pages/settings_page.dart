@@ -701,7 +701,7 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
             ],
           ),
         SettingsSection(title: Text(translate("Settings")), tiles: [
-          if (!disabledSettings && !_hideNetwork && !_hideServer)
+          /*if (!disabledSettings && !_hideNetwork && !_hideServer)
             SettingsTile(
                 title: Text(translate('ID/Relay Server')),
                 leading: Icon(Icons.cloud),
@@ -710,7 +710,7 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
                     _isUsingPublicServer = await bind.mainIsUsingPublicServer();
                     setState(callback);
                   });
-                }),
+                }),*/
           if (!_hideNetwork && !_hideProxy)
             SettingsTile(
                 title: Text(translate('Socks5/Http(s) Proxy')),
