@@ -1831,11 +1831,7 @@ pub fn is_win_10_or_greater() -> bool {
 
 pub fn bootstrap() -> bool {
     if let Ok(lic) = get_license_from_exe_name() {
-        // Only set EXE_RENDEZVOUS_SERVER if runtime-config feature is not enabled
-        #[cfg(not(feature = "runtime-config"))]
-        {
-            *config::EXE_RENDEZVOUS_SERVER.write().unwrap() = lic.host.clone();
-        }
+         *config::EXE_RENDEZVOUS_SERVER.write().unwrap() = lic.host.clone();
     }
 
     #[cfg(debug_assertions)]
