@@ -2377,8 +2377,9 @@ List<String>? urlLinkToCmdArgs(Uri uri) {
       final password = uri.path.substring("/".length);
       if (password.isNotEmpty) {
         Timer(Duration(seconds: 1), () async {
-          await bind.mainSetPermanentPassword(password: password);
-          showToast(translate('Successful'));
+          final ok =
+              await bind.mainSetPermanentPasswordWithResult(password: password);
+          showToast(translate(ok ? 'Successful' : 'Failed'));
         });
       }
     }
@@ -3938,9 +3939,7 @@ void earlyAssert() {
 
 void checkUpdate() {
   if (!isWeb) {
-    final isWindowsInstalled = isWindows && bind.mainIsInstalled();
-    final shouldCheckUpdate = isWindowsInstalled || !bind.isCustomClient();
-    if (shouldCheckUpdate) {
+    if (!bind.isCustomClient()) {
       platformFFI.registerEventHandler(
           kCheckSoftwareUpdateFinish, kCheckSoftwareUpdateFinish,
           (Map<String, dynamic> evt) async {
@@ -4119,4 +4118,44 @@ String mouseButtonsToPeer(int buttons) {
     default:
       return '';
   }
+}
+
+/// Build an avatar widget from an avatar URL or data URI string.
+/// Returns [fallback] if avatar is empty or cannot be decoded.
+/// [borderRadius] defaults to [size]/2 (circle).
+Widget? buildAvatarWidget({
+  required String avatar,
+  required double size,
+  double? borderRadius,
+  Widget? fallback,
+}) {
+  final trimmed = avatar.trim();
+  if (trimmed.isEmpty) return fallback;
+
+  ImageProvider? imageProvider;
+  if (trimmed.startsWith('data:image/')) {
+    final comma = trimmed.indexOf(',');
+    if (comma > 0) {
+      try {
+        imageProvider = MemoryImage(base64Decode(trimmed.substring(comma + 1)));
+      } catch (_) {}
+    }
+  } else if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    imageProvider = NetworkImage(trimmed);
+  }
+
+  if (imageProvider == null) return fallback;
+
+  final radius = borderRadius ?? size / 2;
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(radius),
+    child: Image(
+      image: imageProvider,
+      width: size,
+      height: size,
+      fit: BoxFit.cover,
+      errorBuilder: (_, __, ___) =>
+          fallback ?? SizedBox.shrink(),
+    ),
+  );
 }
